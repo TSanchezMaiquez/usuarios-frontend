@@ -1,6 +1,5 @@
 
 <div class="container">
- 
 
     <h1>Lista de usuarios</h1>
     <div class="conexionPerdida" *ngIf="usuarios.length === 0 && nameFilter === null && firstnameFilter === null && userRolFilter === null" >No se ha podido acceder al backend</div>
@@ -20,7 +19,11 @@
 
     <div class="for-group" class="col-4 col-md-4">
       <label for="userRol">Rol</label>
-      <input type="text" [(ngModel)]="userRolFilter" name="userRol">
+      <select name="rolUsuario" [(ngModel)]="userRolFilter" name="userRol">
+        <option value="" selected></option>
+        <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+        <option value="CONTRIBUTOR">CONTRIBUTOR</option>
+      </select>
     </div>
 
     <div class="buscar">

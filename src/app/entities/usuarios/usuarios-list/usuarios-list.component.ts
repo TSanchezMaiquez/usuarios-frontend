@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../model/usuarios.model';
 import { UsuariosService } from '../service/usuarios.service';
 import { ToastrService } from 'ngx-toastr';
-import { timeInterval, timeout } from 'rxjs';
 
 @Component({
   selector: 'app-usuarios-list',
@@ -15,7 +14,7 @@ export class UsuariosListComponent  implements OnInit{
   userIdToDelete?: number;
 
   page: number = 0;
-  size: number = 35;
+  size: number = 5;
   sort: string = 'id,asc';
 
   first: boolean = false;
@@ -45,9 +44,9 @@ export class UsuariosListComponent  implements OnInit{
     if (this.firstnameFilter){
       filters.push("apellidos:MATCH:"+ this.firstnameFilter);
     }
-    // if(this.userRolFilter){
-    //   filters.push("rolUsuario:MATCH:"+ this.userRolFilter);
-    // }
+    if(this.userRolFilter){
+      filters.push("rolUsuario:MATCH:"+ this.userRolFilter);
+    }
     if(filters.length>0){
       return filters.join(',');
     }else{
