@@ -1,0 +1,90 @@
+<div class="container">
+    <h1>Ficha de usuario</h1>
+
+    <form *ngIf="usuario" #userForm="ngForm" name="userForm" role="form" novalidate autocomplete="off">
+        <div class="form-group" *ngIf="modo==='UPDATE'">
+            <label for="id">Id</label>
+            <input disabled type="number" [(ngModel)]="usuario.id" name="id" class="form-control" id="id" #id="ngModel"  readonly>
+        </div>
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" [(ngModel)]="usuario.nombre" name="name"class="form-control" id="name" #name="ngModel" required minlength="3" maxlength="100">
+        </div>
+        <div *ngIf="(name.dirty && name.errors)">
+            <small class="form-text text-danger" *ngIf="name.errors['required']">
+              El nombre es obligatorio
+            </small>
+            <small class="form-text text-danger" *ngIf="name.errors['minlength']">
+                El nombre debe tener al menos 3 caracteres
+              </small>
+              <small class="form-text text-danger" *ngIf="name.errors['maxlength']">
+                El nombre no puede tener más de 100 caracteres
+              </small>
+        </div>
+        <div class="form-group">
+            <label for="firstName">Apellidos</label>
+            <input type="text" [(ngModel)]="usuario.apellidos" name="firstName"class="form-control" id="firstName" #firstName="ngModel" required minlength="3" maxlength="100">
+        </div>
+        <div *ngIf="(firstName.dirty && firstName.errors)">
+            <small class="form-text text-danger" *ngIf="firstName.errors['required']">
+              Los apellidos son obligatorio
+            </small>
+            <small class="form-text text-danger" *ngIf="firstName.errors['minlength']">
+                Los apellidos deben tener al menos 3 caracteres
+              </small>
+              <small class="form-text text-danger" *ngIf="firstName.errors['maxlength']">
+                Los apellidos no pueden tener más de 100 caracteres
+              </small>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" [(ngModel)]="usuario.email" name="email"class="form-control" id="email" #email="ngModel" required minlength="3" maxlength="100" pattern="{{emailRegex}}">
+        </div>
+        <div *ngIf="(email.dirty && email.errors)">
+            <small class="form-text text-danger" *ngIf="email.errors['required']">
+              El email es obligatorio
+            </small>
+            <small class="form-text text-danger" *ngIf="email.errors['minlength']">
+                El email debe tener al menos 3 caracteres
+              </small>
+              <small class="form-text text-danger" *ngIf="email.errors['maxlength']">
+                El email no puede tener más de 100 caracteres
+              </small>
+              <small class="form-text text-danger" *ngIf="email.errors['pattern']">
+                No es un formato valido
+              </small>
+        </div>
+        <div class="form-group">
+            <label for="rolUsuario">Rol usuario</label>
+            <select [(ngModel)]="usuario.rolUsuario" name="rolUsuario" class="form-control" id="rolUsuario" #rolUsuario="ngModel" required maxlength="20">
+                <option value="" disabled selected>Seleccionar Rol</option>
+                <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                <option value="CONTRIBUTOR">CONTRIBUTOR</option>
+            </select>
+        </div>
+        
+    
+        <div class="buttonForm">
+            <button (click)="saveUser()" type="button" class="btn btn-secondary btnGuardar"  [disabled]="userForm.invalid">Guardar</button>
+            <button class="nav-link" aria-current="page"  data-bs-toggle="modal" data-bs-target="#askConfirmationCancel">Cancelar</button>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="askConfirmationCancel" tabindex="-1" aria-labelledby="askConfirmationDelete" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Cancelar operación</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Desea cancelar? Si continua se perderan los cambios realizados y volverá al listado de usuarios.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="volver()" >descartar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>

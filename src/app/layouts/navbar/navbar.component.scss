@@ -1,0 +1,22 @@
+.navbar{
+  padding: 10px;
+  background-color: rgb(96, 71, 145);
+  font-family: "Figtree";
+  height: 80px;
+}
+.navbar-brand{
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+.navbar-nav li.active > a{
+    background-color: rgb(224, 198, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 45%;
+}
+@media (max-width: 991.98px) {
+   .nav-link {
+      color: black;
+      width: 65px;
+      text-align: center;
+    }
+  }

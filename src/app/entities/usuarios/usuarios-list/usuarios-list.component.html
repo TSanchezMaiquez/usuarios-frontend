@@ -1,0 +1,86 @@
+
+<div class="container">
+ 
+
+    <h1>Lista de usuarios</h1>
+    <div class="conexionPerdida" *ngIf="usuarios.length === 0 && nameFilter === null && firstnameFilter === null && userRolFilter === null" >No se ha podido acceder al backend</div>
+    <div class="conexionPerdida" *ngIf="usuarios.length === 0 && (nameFilter !== null && firstnameFilter !== null && userRolFilter !== null)" >No se han encontrado datos que coincidan con la busqueda</div>
+<form>
+  <div class="row buscador">
+    <h2>Buscador</h2>
+    <div class="for-group" class="col-4 col-md-4">
+      <label for="name">Nombre</label>
+      <input type="text" [(ngModel)]="nameFilter" name="name">
+    </div>
+
+    <div class="for-group" class="col-4 col-md-4">
+      <label for="firstname">Apellidos</label>
+      <input type="text" [(ngModel)]="firstnameFilter" name="firstname">
+    </div>
+
+    <div class="for-group" class="col-4 col-md-4">
+      <label for="userRol">Rol</label>
+      <input type="text" [(ngModel)]="userRolFilter" name="userRol">
+    </div>
+
+    <div class="buscar">
+      <button id="btnSearch" class="btn btn-secondary" (click)="searchByFilter()">Buscar</button>
+    </div>
+
+  </div>
+</form>
+
+
+    <div id="buttonCreateContainer">
+        <button class="btnNuevo" [routerLink]="['/users', 'new']">Nuevo Usuario</button>
+    </div>
+
+    <div class="table-responsive"*ngIf="usuarios.length>0">
+        <table class="table">
+            <thead>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th>Rol usuario</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of usuarios">
+                    <td class="seleccionado">{{usuario.id}}</td>
+                    <td>{{usuario.nombre}}</td>
+                    <td>{{usuario.apellidos}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.rolUsuario}}</td>
+                    <td>
+                        <button type="button" id="btnEditarUsuario" [routerLink]="['/users', usuario.id]">Editar</button>
+                        <button id="btnEliminarUsuario" data-bs-toggle="modal" data-bs-target="#askConfirmationDelete" (click)="prepareUserToDelete(usuario.id!)">Eliminar</button>
+                    </td>
+                 </tr>
+            </tbody>
+        </table>
+</div>
+
+
+<div class="modal fade" id="askConfirmationDelete" tabindex="-1" aria-labelledby="askConfirmationDelete" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmación de borrado</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Desea eliminar el registro seleccionado? Esta operación no puede deshacerse.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteUser()" >Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="botoneraPaginacion">
+    <button [disabled]="first" class="btn btn-secondary btnAtras" (click)="navegarAnterior()">Anterior</button>
+    <span> Pagina {{page+1}} de {{totalPages}} - Elementos totales: {{totalElements}}</span>
+    <button [disabled]="last" class="btn btn-secondary btnSiguiente" (click)="navegarSiguiente()">Siguiente</button>
+  </div>

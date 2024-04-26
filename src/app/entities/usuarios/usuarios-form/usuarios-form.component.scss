@@ -1,0 +1,50 @@
+.container {
+    width: 600px;
+    padding: 30px;
+}
+label{
+    font-weight: bold;
+    position: relative;
+    
+}
+.buttonForm{
+    margin: 0 auto;
+    padding: 20px 0;
+    position: relative;
+    left: 460px;
+    
+}
+.btnGuardar{
+    background-color: rgb(67, 164, 67);
+    color: white;
+}
+.nav-link{
+    position: relative;
+    right: 90px;
+    top: -38px;
+    background-color: rgb(213, 34, 34);
+    color: white;
+    width: 80px;
+    padding: 7px;
+    border-radius: 10%;
+}
+form {
+    margin: 25px;
+  
+    .form-group {
+      margin-bottom: 25px;
+    }
+  
+    label {
+      display: block;
+    }
+  
+    .ng-valid[required], .ng-valid.required {
+      border-left: 5px solid #42A948; /* green */
+    }
+  
+    .ng-invalid:not(form) {
+      border-left: 5px solid #a94442; /* red */
+    }
+  
+  }

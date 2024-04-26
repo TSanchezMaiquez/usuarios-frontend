@@ -1,0 +1,113 @@
+.container{
+    padding: 50px;
+    padding-top: 5px;
+}
+
+.table{
+    background-color: rgb(202, 181, 120);
+    color: white;
+    border-collapse: collapse;
+    border: 3px solid #7c6423;
+}
+
+th{
+    padding-left: 5px;
+}
+h1{
+    text-align: center;
+    margin-right: 60px;
+    margin-bottom: 20px;
+    font-family: "Dancing Script";
+    font-weight: bold;
+}
+button {
+    width: 80px;
+    font-size: 13px;
+    padding: 5px;
+}
+#btnEditarUsuario{
+    margin-right: 10px;
+    margin-left: 10px;
+    border-color: #1894d2;
+}
+#btnEditarUsuario:hover {
+    background-color: #7bc7ed;
+    color: white;
+}
+#btnEliminarUsuario {
+    border-color: #d21818;
+}
+#btnEliminarUsuario:hover{
+    background-color: #ed7b7b;
+    color: white;
+}
+.seleccionado:hover{
+    background-color: rgb(255, 251, 240);
+  
+}
+tr:hover td {
+    background-color: rgb(255, 251, 240);
+}
+.conexionPerdida {
+    text-align: center;
+    color: #d21818;
+    font-weight: bold;
+}
+#buttonCreateContainer {
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px 0;
+   
+}
+
+.btnSiguiente{
+    background-color: #80807f;
+    margin-left: 5px;
+}
+.btnAtras{
+    background-color: #80807f;
+    margin-right: 5px;
+}
+.btnNuevo {
+    border-radius: 10px;
+    background-color: #91c48f;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 2px solid green;
+    width: 120px;;
+  
+}
+.btn-secondary[disabled] {
+    background-color: #ff0505; 
+    border-color: #6c757d;
+  }
+  .botoneraPaginacion{
+    padding-top: 5px;
+  }
+  label{
+    margin-right: 5px;
+    font-weight: bold;
+    font-family: "Figtree";
+  }
+  .buscar {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+  .buscador{
+    border: 2px solid black;
+    padding: 18px;
+    background-color: #f9f9f9;
+  }
+  h2{
+    font-size: 20px;
+    padding-bottom: 10px;
+    font-family: "Figtree";
+    font-weight: bold;
+    color: #1161a6;
+    
+  }
